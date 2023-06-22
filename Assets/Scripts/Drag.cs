@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Drag : MonoBehaviour
+[RequireComponent(typeof(CanvasGroup))]
+public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private Canvas canvas;
+	private RectTransform rectTransform;
+	private CanvasGroup canvasGroup;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Awake()
+	{
+		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+		rectTransform = GetComponent<RectTransform>();
+		canvasGroup = GetComponent<CanvasGroup>();
+	}
+	public void OnBeginDrag(PointerEventData eventData)
+	{
+		canvasGroup.alpha = 0.8f;
+		canvasGroup.blocksRaycasts = false;
+	}
+
+	public void OnDrag(PointerEventData eventData)
+	{
+		rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+	}
+
+	public void OnEndDrag(PointerEventData eventData)
+	{
+		canvasGroup.alpha = 1f;
+		canvasGroup.blocksRaycasts = true;
+	}
 }
