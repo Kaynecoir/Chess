@@ -24,8 +24,8 @@ public class ChessFigure : MonoBehaviour
 
 	public virtual void Move(Vector2Int targetPos)
 	{
-		GameManager.figuresMap[targetPos.x, targetPos.y] = this;
-		GameManager.figuresMap[position.x, position.y] = null;
+		GameManager.chessMap[targetPos.x, targetPos.y] = this;
+		GameManager.chessMap[position.x, position.y] = null;
 		position = targetPos;
 	}
 }

@@ -10,6 +10,7 @@ public class Table : MonoBehaviour
 	public Vector2 sizeCube;
 	public Sprite iconBlack, iconWhite;
 	public GameObject icon;
+	public UGameManager GM;
 
 	[SerializeField] private Canvas canvas;
 	private void Start()
@@ -22,7 +23,10 @@ public class Table : MonoBehaviour
 		{
 			for(float j = -sizeTable.y / 2f; j < sizeTable.y / 2f; j+=1)
 			{
-				Gizmos.color = Mathf.RoundToInt(i + j + (sizeTable.x / 2f - sizeTable.x / 2) + (sizeTable.y / 2f - sizeTable.y / 2)) % 2 == 0 ? Color.black : Color.white;
+				if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] != null) 
+					Gizmos.color = new Color(Mathf.Abs(GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)].value) * 40, 0, 0);
+				else if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] == null)
+					Gizmos.color = Color.black;
 				Gizmos.DrawCube(transform.position + new Vector3(i + 0.5f, j + 0.5f), new Vector3(sizeCube.x, sizeCube.y, 1));
 			}
 		}

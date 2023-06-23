@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class UGameManager : MonoBehaviour
 {
-	public ChessFigure[,] figuresMap = new ChessFigure[8, 8];
+	public ChessFigure[,] chessMap = new ChessFigure[8, 8];
 	public GameObject figureWhitePawn, figureWhiteRook, figureWhiteKnight, figureWhiteBishop, figureWhiteQueen, figureWhiteKing,
 					figureBlackPawn, figureBlackRook, figureBlackKnight, figureBlackBishop, figureBlackQueen, figureBlackKing;
 	public GameObject figuresCollection;
 
 	private int[,] firstPosition =
+	//{
+	//	{ 2, 3, 4, 5, 6, 4, 3, 2 },
+	//	{ 1, 1, 1, 1, 1, 1, 1, 1 },
+	//	{ 0, 0, 0, 0, 0, 0, 0, 0 },
+	//	{ 0, 0, 0, 0, 0, 0, 0, 0 },
+	//	{ 0, 0, 0, 0, 0, 0, 0, 0 },
+	//	{ 0, 0, 0, 0, 0, 0, 0, 0 },
+	//	{-1,-1,-1,-1,-1,-1,-1,-1 },
+	//	{-2,-3,-4,-5,-6,-4,-3,-2 }
+	//};
+	//	TEST MAP
 	{
-		{ 2, 3, 4, 5, 6, 4, 3, 2 },
-		{ 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 0, 0, 0, 0, 0, 0, 0, 2 },
+		{ 0, 1, 0, 0, 0, 0, 1, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{-1,-1,-1,-1,-1,-1,-1,-1 },
-		{-2,-3,-4,-5,-6,-4,-3,-2 }
+		{ 0, 0, 0, 0, -1, 0, 0, 0 },
+		{ 0, -1, 0, 0, 0, 0, 0, 0 },
+		{ -2, 0, 0, 0, 0, 0, 0, 0 }
 	};
 
 	private void Awake()
@@ -70,6 +81,8 @@ public class UGameManager : MonoBehaviour
 							break;
 					}
 					GameObject go = Instantiate(fig, new Vector3(i - 3.5f, j - 3.5f, 0), Quaternion.identity, figuresCollection.transform);
+					go.GetComponent<ChessFigure>().position = new Vector2Int(i, j);
+					chessMap[i, j] = go.GetComponent<ChessFigure>();
 				}
 			}
 		}
