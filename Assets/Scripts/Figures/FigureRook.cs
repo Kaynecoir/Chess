@@ -8,6 +8,11 @@ public class FigureRook : ChessFigure
 	public override bool TryMove(Vector2Int targetPos)
 	{
 		if (!base.TryMove(targetPos)) return false;
+		if (targetPos.x != position.x && targetPos.y != position.y)
+		{
+			//Debug.Log("Uncorrect target pos");
+			return false;
+		}
 
 		if (targetPos.x == position.x)
 		{
@@ -69,11 +74,6 @@ public class FigureRook : ChessFigure
 					//Debug.Log("Pos " + i + ", " + position.y + " is empty");
 				}
 			}
-		}
-		if (targetPos.x != position.x && targetPos.y != position.y)
-		{
-			//Debug.Log("Uncorrect target pos");
-			return false;
 		}
 
 		return true;
