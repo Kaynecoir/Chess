@@ -5,7 +5,9 @@ using UnityEngine;
 public class ChessFigure : MonoBehaviour
 {
 	public Vector2Int position;
+	public GameObject iconAbleMove;
 	public int value;
+	public bool selected;
 
 	protected UGameManager GameManager;
 

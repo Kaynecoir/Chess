@@ -13,7 +13,17 @@ public class FigureKnight : ChessFigure
 			if (targetPos.y == position.y - 2) return true;
 			if (targetPos.y == position.y + 2) return true;
 		}
+		if (targetPos.x == position.x + 1)
+		{
+			if (targetPos.y == position.y - 2) return true;
+			if (targetPos.y == position.y + 2) return true;
+		}
 		if (targetPos.x == position.x - 2)
+		{
+			if (targetPos.y == position.y - 1) return true;
+			if (targetPos.y == position.y + 1) return true;
+		}
+		if (targetPos.x == position.x + 2)
 		{
 			if (targetPos.y == position.y - 1) return true;
 			if (targetPos.y == position.y + 1) return true;

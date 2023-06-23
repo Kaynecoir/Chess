@@ -12,21 +12,23 @@ public class Table : MonoBehaviour
 	public GameObject icon;
 	public UGameManager GM;
 
-	[SerializeField] private Canvas canvas;
-	private void Start()
-	{
-		
-	}
 	private void OnDrawGizmosSelected()
 	{
 		for(float i = -sizeTable.x / 2f; i < sizeTable.x / 2f; i+=1)
 		{
 			for(float j = -sizeTable.y / 2f; j < sizeTable.y / 2f; j+=1)
 			{
-				if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] != null) 
-					Gizmos.color = new Color(Mathf.Abs(GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)].value) * 40, 0, 0);
+				if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] != null)
+				{
+					if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)].value < 0) Gizmos.color = Color.red;
+					else Gizmos.color = Color.cyan;
+				}
 				else if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] == null)
-					Gizmos.color = Color.black;
+				{
+					if (GM.selectFig != null && GM.selectFig.TryMove(new Vector2Int(Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)))) Gizmos.color = Color.yellow;
+					else Gizmos.color = Color.black;
+				}
+
 				Gizmos.DrawCube(transform.position + new Vector3(i + 0.5f, j + 0.5f), new Vector3(sizeCube.x, sizeCube.y, 1));
 			}
 		}
@@ -38,7 +40,7 @@ public class Table : MonoBehaviour
 		{
 			for (float j = -sizeTable.y / 2f; j < sizeTable.y / 2f; j += 1)
 			{
-				GameObject go = Instantiate(icon, (transform.position + new Vector3(i + 0.5f, j + 0.5f)) / canvas.scaleFactor, Quaternion.identity, transform);
+				GameObject go = Instantiate(icon, (transform.position + new Vector3(i + 0.5f, j + 0.5f)), Quaternion.identity, transform);
 				go.name = "Cell [" + (i + sizeTable.x / 2).ToString() + "][" + (j + sizeTable.y / 2).ToString() + "]";
 				go.GetComponent<Drop>().position = new Vector2Int((int)i + sizeTable.x / 2, (int)j + sizeTable.y / 2);
 				go.GetComponentInChildren<Image>().sprite = Mathf.RoundToInt(i + j + (sizeTable.x / 2f - sizeTable.x / 2) + (sizeTable.y / 2f - sizeTable.y / 2)) % 2 == 0 ? iconBlack : iconWhite;

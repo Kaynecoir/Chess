@@ -8,6 +8,7 @@ public class UGameManager : MonoBehaviour
 	public GameObject figureWhitePawn, figureWhiteRook, figureWhiteKnight, figureWhiteBishop, figureWhiteQueen, figureWhiteKing,
 					figureBlackPawn, figureBlackRook, figureBlackKnight, figureBlackBishop, figureBlackQueen, figureBlackKing;
 	public GameObject figuresCollection;
+	public ChessFigure selectFig;
 
 	private int[,] firstPosition =
 	//{
@@ -23,12 +24,12 @@ public class UGameManager : MonoBehaviour
 	//	TEST MAP
 	{
 		{ 0, 0, 0, 0, 0, 0, 0, 2 },
-		{ 0, 1, 0, 0, 0, 0, 1, 0 },
+		{ 0, 1, 0,-4, 0, 0, 1, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, -1, 0, 0, 0 },
-		{ 0, -1, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0,-3, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 3, 0 },
+		{ 0, 0, 0, 0,-1, 0, 0, 0 },
+		{ 0,-1, 0, 0, 0, 0, 4, 0 },
 		{ -2, 0, 0, 0, 0, 0, 0, 0 }
 	};
 

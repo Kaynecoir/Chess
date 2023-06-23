@@ -10,12 +10,12 @@ public class FigurePawn : ChessFigure
 		if (!base.TryMove(targetPos)) return false;
 
 
-		Debug.Log("Figure pos: " + position);
-		Debug.Log("Target pos: " + targetPos);
+		//Debug.Log("Figure pos: " + position);
+		//Debug.Log("Target pos: " + targetPos);
 		// Усовие для белых
 		if (targetPos.y == position.y + 1 && value > 0)
 		{
-			Debug.Log("White trymove 3");
+			//Debug.Log("White trymove 3");
 			// Движение вперёд
 			if (targetPos.x == position.x && GameManager.chessMap[targetPos.x, targetPos.y] == null) return true;
 			// Атака по искоси
@@ -23,13 +23,13 @@ public class FigurePawn : ChessFigure
 		}
 		if (targetPos.y == position.y + 2 && targetPos.x == position.x && value > 0)
 		{
-			Debug.Log("Try move to 2 step");
+			//Debug.Log("Try move to 2 step");
 			if (GameManager.chessMap[position.x, position.y + 1] == null && GameManager.chessMap[position.x, position.y + 2] == null)
 			{
-				Debug.Log("Forward is clear");
+				//Debug.Log("Forward is clear");
 				if (firstMove)
 				{
-					Debug.Log("Is first move");
+					//Debug.Log("Is first move");
 					return true;
 				}
 			}
@@ -38,7 +38,7 @@ public class FigurePawn : ChessFigure
 		// Усовие для чёрных
 		if (targetPos.y == position.y - 1 && value < 0)
 		{
-			Debug.Log("Black trymove");
+			//Debug.Log("Black trymove");
 			// Движение вперёд
 			if (targetPos.x == position.x && GameManager.chessMap[targetPos.x, targetPos.y] == null) return true;
 			// Атака по искоси
@@ -46,13 +46,13 @@ public class FigurePawn : ChessFigure
 		}
 		if (targetPos.y == position.y - 2 && targetPos.x == position.x && value < 0)
 		{
-			Debug.Log("Try move to 2 step");
+			//Debug.Log("Try move to 2 step");
 			if (GameManager.chessMap[position.x, position.y - 1] == null && GameManager.chessMap[position.x, position.y - 2] == null)
 			{
-				Debug.Log("Forward is clear");
+				//Debug.Log("Forward is clear");
 				if (firstMove)
 				{
-					Debug.Log("Is first move");
+					//Debug.Log("Is first move");
 					return true;
 				}
 			}

@@ -5,18 +5,26 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerDownHandler
 {
 	[SerializeField] private Canvas canvas;
+	private UGameManager GM;
 	private RectTransform rectTransform;
 	private CanvasGroup canvasGroup;
 
 	private void Awake()
 	{
 		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+		GM = GameObject.Find("GameManager").GetComponent<UGameManager>();
 		rectTransform = GetComponent<RectTransform>();
 		canvasGroup = GetComponent<CanvasGroup>();
+	}	
+
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		GM.selectFig = GetComponent<ChessFigure>();
 	}
+
 	public void OnBeginDrag(PointerEventData eventData)
 	{
 		canvasGroup.alpha = 0.8f;
@@ -33,4 +41,6 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
 		canvasGroup.alpha = 1f;
 		canvasGroup.blocksRaycasts = true;
 	}
+
+
 }
