@@ -25,7 +25,7 @@ public class Table : MonoBehaviour
 				}
 				else if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] == null)
 				{
-					if (GM.selectFig != null && GM.selectFig.TryMove(new Vector2Int(Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)))) Gizmos.color = Color.yellow;
+					if (GM.selectedFig != null && GM.selectedFig.TryMove(new Vector2Int(Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)))) Gizmos.color = Color.yellow;
 					else Gizmos.color = Color.black;
 				}
 

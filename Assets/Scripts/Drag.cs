@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(CanvasGroup))]
 public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerDownHandler
 {
+	public bool ableDrag = true;
 	[SerializeField] private Canvas canvas;
 	private UGameManager GM;
 	private RectTransform rectTransform;
@@ -22,7 +23,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		GM.selectFig = GetComponent<ChessFigure>();
+		GM.SelectFigur(GetComponent<ChessFigure>());
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)

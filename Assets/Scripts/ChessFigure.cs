@@ -7,7 +7,7 @@ public class ChessFigure : MonoBehaviour
 	public Vector2Int position;
 	public GameObject iconAbleMove;
 	public int value;
-	public bool selected;
+	public bool selected, isAbleMove = true;
 
 	protected UGameManager GameManager;
 
@@ -21,6 +21,7 @@ public class ChessFigure : MonoBehaviour
 		if (targetPos.x < 0 || targetPos.x > 7 ||
 			targetPos.y < 0 || targetPos.y > 7) return false;
 		if (targetPos == position) return false;
+		if (!isAbleMove) return false;
 		return true;
 	}
 
@@ -28,6 +29,7 @@ public class ChessFigure : MonoBehaviour
 	{
 		GameManager.chessMap[targetPos.x, targetPos.y] = this;
 		GameManager.chessMap[position.x, position.y] = null;
+		GameManager.NextMove();
 		position = targetPos;
 	}
 }
