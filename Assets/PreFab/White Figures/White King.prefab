@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -885019780937518054}
   m_Layer: 5
   m_Name: White King
-  m_TagString: Untagged
+  m_TagString: White Figures
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e9e4143b4cedc4abc08900a4f57f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ableDrag: 1
   canvas: {fileID: 0}
 --- !u!114 &-885019780937518054
 MonoBehaviour:
@@ -120,3 +121,4 @@ MonoBehaviour:
   iconAbleMove: {fileID: 0}
   value: 6
   selected: 0
+  isAbleMove: 0

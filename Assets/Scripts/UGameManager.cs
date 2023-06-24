@@ -8,6 +8,9 @@ public class UGameManager : MonoBehaviour
 	public GameObject figureWhitePawn, figureWhiteRook, figureWhiteKnight, figureWhiteBishop, figureWhiteQueen, figureWhiteKing,
 					figureBlackPawn, figureBlackRook, figureBlackKnight, figureBlackBishop, figureBlackQueen, figureBlackKing;
 	public GameObject figuresCollection;
+	public GameObject ableMovesCollection;
+	public GameObject iconAbleMove;
+	public int countAbleMove;
 	public ChessFigure selectedFig;
 
 	private bool isWhiteMove = false;
@@ -103,24 +106,44 @@ public class UGameManager : MonoBehaviour
 	{
 		isWhiteMove = !isWhiteMove;
 
-		if (isWhiteMove) Debug.Log("white is move");
-		else Debug.Log("Black is move");
-
 		foreach(ChessFigure chf in whiteChessFigures)
 		{
-			Debug.Log(chf.value.ToString() + chf.position);
 			chf.isAbleMove = isWhiteMove;
 		}
 		foreach(ChessFigure chf in blackChessFigures)
 		{
-			Debug.Log(chf.value.ToString() + chf.position);
 			chf.isAbleMove = !isWhiteMove;
+		}
+		GameObject[] gos = GameObject.FindGameObjectsWithTag("AbleMoveIcon");
+		foreach(GameObject go in gos)
+		{
+			Destroy(go);
 		}
 	}
 
 	public void SelectFigur(ChessFigure chf)
 	{
+
 		Debug.Log("Selekted: " + chf.value.ToString() + chf.position);
 		selectedFig = chf;
+		SeeAbleMove();
+	}
+
+	public void SeeAbleMove()
+	{
+		if(selectedFig != null)
+		{
+			for(int i = 0; i < 8; i++)
+			{
+				for(int j = 0; j < 8; j++)
+				{
+					if (selectedFig.TryMove(new Vector2Int(i, j)))
+					{
+						GameObject go = Instantiate(iconAbleMove, new Vector3(i - 3.5f, j - 3.5f), Quaternion.identity, ableMovesCollection.transform);
+						go.name = "AbleMove";
+					}
+				}
+			}
+		}
 	}
 }

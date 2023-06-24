@@ -32,4 +32,12 @@ public class ChessFigure : MonoBehaviour
 		GameManager.NextMove();
 		position = targetPos;
 	}
+
+	public virtual bool TryKick(Vector2Int targetPos)
+	{
+		if (GameManager.chessMap[targetPos.x, targetPos.y] == null) return false;
+		if (this.value > 0 && GameManager.chessMap[targetPos.x, targetPos.y].value >= 0) return false;
+		if (this.value < 0 && GameManager.chessMap[targetPos.x, targetPos.y].value <= 0) return false;
+		return true;
+	}
 }

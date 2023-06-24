@@ -4188,7 +4188,9 @@ MonoBehaviour:
   figureBlackQueen: {fileID: 692077421560524064, guid: 8d16a6790f0d69d48a9a3ed400c7015a, type: 3}
   figureBlackKing: {fileID: 6753439395589233031, guid: 75d5233c4ccd3e349b319fd85b4b9b7c, type: 3}
   figuresCollection: {fileID: 1669368149}
-  selectFig: {fileID: 0}
+  iconAbleMove: {fileID: 4729843677256000966, guid: c453a39d9c8e54043b4857232afd6989, type: 3}
+  countAbleMove: 0
+  selectedFig: {fileID: 0}
 --- !u!1 &1055616431
 GameObject:
   m_ObjectHideFlags: 0
