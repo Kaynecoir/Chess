@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6753439395589233025}
   - component: {fileID: 6753439395589233052}
   - component: {fileID: 6753439395589233027}
-  - component: {fileID: 1929670324947346725}
+  - component: {fileID: -885019780937518054}
   m_Layer: 5
   m_Name: White King
   m_TagString: Untagged
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
---- !u!114 &1929670324947346725
+--- !u!114 &-885019780937518054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6753439395589233031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49cae6506dfb0b74aaed02270bf0790b, type: 3}
+  m_Script: {fileID: 11500000, guid: e37e141a751d6f440bc970bba860b3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}

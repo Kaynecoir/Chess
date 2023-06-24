@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class FigureKing : ChessFigure
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public override bool TryMove(Vector2Int targetPos)
+	{
+		if (!base.TryMove(targetPos)) return false;
+		if (Mathf.Abs(targetPos.x - position.x) > 1 || Mathf.Abs(targetPos.y - position.y) > 1) return false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		return true;
+	}
 }
