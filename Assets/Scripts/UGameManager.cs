@@ -12,9 +12,9 @@ public class UGameManager : MonoBehaviour
 	public GameObject iconAbleMove;
 	public int countAbleMove;
 	public ChessFigure selectedFig;
+	public List<ChessFigure> whiteChessFigures, blackChessFigures;
 
 	private bool isWhiteMove = false;
-	private List<ChessFigure> whiteChessFigures, blackChessFigures;
 
 	private int[,] firstPosition =
 	{
@@ -108,11 +108,13 @@ public class UGameManager : MonoBehaviour
 
 		foreach(ChessFigure chf in whiteChessFigures)
 		{
-			chf.isAbleMove = isWhiteMove;
+			//chf.isAbleMove = isWhiteMove;
+			chf.SetAbleMove(isWhiteMove);
 		}
-		foreach(ChessFigure chf in blackChessFigures)
+		foreach (ChessFigure chf in blackChessFigures)
 		{
-			chf.isAbleMove = !isWhiteMove;
+			//chf.isAbleMove = !isWhiteMove;
+			chf.SetAbleMove(!isWhiteMove);
 		}
 		GameObject[] gos = GameObject.FindGameObjectsWithTag("AbleMoveIcon");
 		foreach(GameObject go in gos)
@@ -123,9 +125,9 @@ public class UGameManager : MonoBehaviour
 
 	public void SelectFigur(ChessFigure chf)
 	{
-
 		Debug.Log("Selekted: " + chf.value.ToString() + chf.position);
 		selectedFig = chf;
+		
 		SeeAbleMove();
 	}
 

@@ -8,28 +8,32 @@ public class Table : MonoBehaviour
 {
 	public Vector2Int sizeTable;
 	public Vector2 sizeCube;
+	public bool isSee;
 	public Sprite iconBlack, iconWhite;
 	public GameObject icon;
 	public UGameManager GM;
 
 	private void OnDrawGizmosSelected()
 	{
-		for(float i = -sizeTable.x / 2f; i < sizeTable.x / 2f; i+=1)
-		{
-			for(float j = -sizeTable.y / 2f; j < sizeTable.y / 2f; j+=1)
+		if(isSee)
+		{ 
+			for (float i = -sizeTable.x / 2f; i < sizeTable.x / 2f; i += 1)
 			{
-				if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] != null)
+				for (float j = -sizeTable.y / 2f; j < sizeTable.y / 2f; j += 1)
 				{
-					if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)].value < 0) Gizmos.color = Color.red;
-					else Gizmos.color = Color.cyan;
-				}
-				else if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] == null)
-				{
-					if (GM.selectedFig != null && GM.selectedFig.TryMove(new Vector2Int(Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)))) Gizmos.color = Color.yellow;
-					else Gizmos.color = Color.black;
-				}
+					if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] != null)
+					{
+						if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)].value < 0) Gizmos.color = Color.red;
+						else Gizmos.color = Color.cyan;
+					}
+					else if (GM.chessMap[Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)] == null)
+					{
+						if (GM.selectedFig != null && GM.selectedFig.TryMove(new Vector2Int(Mathf.RoundToInt(i + 4f), Mathf.RoundToInt(j + 4f)))) Gizmos.color = Color.yellow;
+						else Gizmos.color = Color.black;
+					}
 
-				Gizmos.DrawCube(transform.position + new Vector3(i + 0.5f, j + 0.5f), new Vector3(sizeCube.x, sizeCube.y, 1));
+					Gizmos.DrawCube(transform.position + new Vector3(i + 0.5f, j + 0.5f), new Vector3(sizeCube.x, sizeCube.y, 1));
+				}
 			}
 		}
 	}
