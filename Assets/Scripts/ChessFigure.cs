@@ -8,7 +8,7 @@ public class ChessFigure : MonoBehaviour
 	public Vector2Int position;
 	public Image iconFigure;
 	public int value;
-	public bool selected, isAbleMove = true;
+	public bool selected, isFirstMove = true, isAbleMove = true;
 
 	protected UGameManager GameManager;
 
@@ -43,6 +43,7 @@ public class ChessFigure : MonoBehaviour
 		GameManager.NextMove();
 
 		position = targetPos;
+		isFirstMove = false;
 	}
 
 	public virtual bool TryKick(Vector2Int targetPos)

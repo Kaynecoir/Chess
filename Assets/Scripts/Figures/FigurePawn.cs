@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FigurePawn : ChessFigure
 {
-	bool firstMove = true;
 	public override bool TryMove(Vector2Int targetPos)
 	{
 		if (!base.TryMove(targetPos)) return false;
@@ -17,7 +16,7 @@ public class FigurePawn : ChessFigure
 
 		if (targetPos.y == position.y + 2 && targetPos.x == position.x && value > 0)
 			if (GameManager.chessMap[position.x, position.y + 1] == null && GameManager.chessMap[position.x, position.y + 2] == null)
-				if (firstMove)
+				if (isFirstMove)
 					return true;
 
 		// Усовие для чёрных
@@ -27,7 +26,7 @@ public class FigurePawn : ChessFigure
 
 		if (targetPos.y == position.y - 2 && targetPos.x == position.x && value < 0)
 			if (GameManager.chessMap[position.x, position.y - 1] == null && GameManager.chessMap[position.x, position.y - 2] == null)
-				if (firstMove)
+				if (isFirstMove)
 					return true;
 
 		return false;
@@ -48,7 +47,6 @@ public class FigurePawn : ChessFigure
 	}
 	public override void Move(Vector2Int targetPos)
 	{
-		firstMove = false;
 		base.Move(targetPos);
 	}
 }
