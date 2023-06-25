@@ -133,7 +133,12 @@ public class UGameManager : MonoBehaviour
 
 	public void SeeAbleMove()
 	{
-		if(selectedFig != null)
+		GameObject[] gos = GameObject.FindGameObjectsWithTag("AbleMoveIcon");
+		foreach (GameObject go in gos)
+		{
+			Destroy(go);
+		}
+		if (selectedFig != null)
 		{
 			for(int i = 0; i < 8; i++)
 			{

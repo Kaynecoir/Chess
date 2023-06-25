@@ -47,12 +47,9 @@ public class ChessFigure : MonoBehaviour
 
 	public virtual bool TryKick(Vector2Int targetPos)
 	{
-		//Debug.Log("Try Kick " + targetPos);
 		if (GameManager.chessMap[targetPos.x, targetPos.y] == null) return false;
-		Debug.Log("Target Pos isn't empty");
 		if (this.value > 0 && GameManager.chessMap[targetPos.x, targetPos.y].value >= 0) return false;
 		if (this.value < 0 && GameManager.chessMap[targetPos.x, targetPos.y].value <= 0) return false;
-		Debug.Log("On Target Pos is Enemy " + targetPos);
 		return true;
 	}
 

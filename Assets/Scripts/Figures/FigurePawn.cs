@@ -12,13 +12,9 @@ public class FigurePawn : ChessFigure
 
 		// Усовие для белых
 		if (targetPos.y == position.y + 1 && value > 0)
-		{
 			// Движение вперёд
 			if (targetPos.x == position.x && GameManager.chessMap[targetPos.x, targetPos.y] == null) return true;
-			// Атака по искоси
-			//if (Mathf.Abs(targetPos.x - position.x) == 1 && GameManager.chessMap[targetPos.x, targetPos.y] != null && GameManager.chessMap[targetPos.x, targetPos.y].value < 0) 
-			//	return true;
-		}
+
 		if (targetPos.y == position.y + 2 && targetPos.x == position.x && value > 0)
 			if (GameManager.chessMap[position.x, position.y + 1] == null && GameManager.chessMap[position.x, position.y + 2] == null)
 				if (firstMove)
@@ -26,13 +22,9 @@ public class FigurePawn : ChessFigure
 
 		// Усовие для чёрных
 		if (targetPos.y == position.y - 1 && value < 0)
-		{
 			// Движение вперёд
 			if (targetPos.x == position.x && GameManager.chessMap[targetPos.x, targetPos.y] == null) return true;
-			// Атака по искоси
-			//if (Mathf.Abs(targetPos.x - position.x) == 1 && GameManager.chessMap[targetPos.x, targetPos.y] != null && GameManager.chessMap[targetPos.x, targetPos.y].value > 0) 
-			//	return true;
-		}
+
 		if (targetPos.y == position.y - 2 && targetPos.x == position.x && value < 0)
 			if (GameManager.chessMap[position.x, position.y - 1] == null && GameManager.chessMap[position.x, position.y - 2] == null)
 				if (firstMove)
