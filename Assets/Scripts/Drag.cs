@@ -34,7 +34,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+		rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor * (GM.isWhiteMove ? 1 : -1);
 	}
 
 	public void OnEndDrag(PointerEventData eventData)

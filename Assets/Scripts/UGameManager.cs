@@ -10,11 +10,11 @@ public class UGameManager : MonoBehaviour
 	public GameObject figuresCollection;
 	public GameObject ableMovesCollection;
 	public GameObject iconAbleMove;
+	public GameObject RotateObject;
 	public int countAbleMove;
 	public ChessFigure selectedFig;
 	public List<ChessFigure> whiteChessFigures, blackChessFigures;
-
-	private bool isWhiteMove = false;
+	public bool isWhiteMove = false;
 
 	private int[,] firstPosition =
 	{
@@ -121,6 +121,8 @@ public class UGameManager : MonoBehaviour
 		{
 			Destroy(go);
 		}
+
+		RotateObject.transform.rotation = Quaternion.Euler(0, 0, 180 * (isWhiteMove ? 0 : 1));
 	}
 
 	public void SelectFigur(ChessFigure chf)
@@ -146,7 +148,7 @@ public class UGameManager : MonoBehaviour
 				{
 					if (selectedFig.TryMove(new Vector2Int(i, j)))
 					{
-						GameObject go = Instantiate(iconAbleMove, new Vector3(i - 3.5f, j - 3.5f), Quaternion.identity, ableMovesCollection.transform);
+						GameObject go = Instantiate(iconAbleMove, new Vector3((i - 3.5f) * (isWhiteMove ? 1 : -1), (j - 3.5f) * (isWhiteMove ? 1 : -1)), Quaternion.identity, ableMovesCollection.transform);
 						go.name = "AbleMove";
 					}
 				}
