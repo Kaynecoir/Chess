@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ChessFigure : MonoBehaviour
 {
+	// I don't know why branch chalange don't changing commit table in GitHub
 	public Vector2Int position;
 	public Image iconFigure;
 	public int value;
